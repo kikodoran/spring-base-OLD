@@ -1,0 +1,66 @@
+// Gradient Backgrounds
+// Horizontal gradient background
+// @include horizontal(COLOR, COLOR)
+@mixin horizontal($startColor: #ffffff, $endColor: #000000) {
+	background-color: $endColor;
+	background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor));
+	background-image: -webkit-linear-gradient(left, $startColor, $endColor);
+	background-image: -moz-linear-gradient(left, $startColor, $endColor);
+	background-image: -ms-linear-gradient(left, $startColor, $endColor);
+	background-image: -o-linear-gradient(left, $startColor, $endColor);
+	background-image: linear-gradient(left, $startColor, $endColor);
+	background-repeat: repeat-x;
+}
+
+// Vertical gradient background
+// @include vertical(COLOR, COLOR)
+@mixin vertical($startColor: #ffffff, $endColor:  #777777) {
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor));
+	background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+	background-color: $endColor;
+	background-image: -moz-linear-gradient(top, $startColor, $endColor);
+	background-image: -ms-linear-gradient(top, $startColor, $endColor);
+	background-image: -o-linear-gradient(top, $startColor, $endColor);
+	background-image: linear-gradient(top, $startColor, $endColor);
+	background-repeat: repeat-x;
+}
+
+// Directional gradient background
+// @include directional(COLOR, COLOR, DEG)
+@mixin directional($startColor: #ffffff, $endColor: #777777, $deg: 45deg) {
+	background-color: $endColor;
+	background-image: -moz-linear-gradient($deg, $startColor, $endColor);
+	background-image: -ms-linear-gradient($deg, $startColor, $endColor);
+	background-image: -webkit-linear-gradient($deg, $startColor, $endColor);
+	background-image: -o-linear-gradient($deg, $startColor, $endColor);
+	background-image: linear-gradient($deg, $startColor, $endColor);
+	background-repeat: repeat-x;
+}
+
+// Retina(2x) background image
+// @include background-2x(STRING RETINABACKGROUNDIMAGEURL);
+@mixin background-2x($bgimg) {
+	@media  only screen and (-webkit-min-device-pixel-ratio: 2),
+			only screen and (   min--moz-device-pixel-ratio: 2),
+			only screen and (     -o-min-device-pixel-ratio: 2/1),
+			only screen and (        min-device-pixel-ratio: 2),
+			only screen and (                min-resolution: 192dpi),
+			only screen and (                min-resolution: 2dppx) {
+		background-image: #{$bgimg};
+		background-size: 100% auto;
+	}
+}
+
+// Retina(3x) background image
+// @include background-3x(STRING RETINABACKGROUNDIMAGEURL);
+@mixin background-3x($bgimg) {
+	@media  only screen and (-webkit-min-device-pixel-ratio: 3),
+			only screen and (   min--moz-device-pixel-ratio: 3),
+			only screen and (     -o-min-device-pixel-ratio: 3/1),
+			only screen and (        min-device-pixel-ratio: 3),
+			only screen and (                min-resolution: 288dpi),
+			only screen and (                min-resolution: 3dppx) {
+		background-image: #{$bgimg};
+		background-size: 100% auto;
+	}
+}
