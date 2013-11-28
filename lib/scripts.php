@@ -10,8 +10,7 @@
  * 2. /theme/assets/js/vendor/modernizr-2.7.0.min.js
  * 3. /theme/assets/js/main.min.js (in footer)
  */
-function roots_scripts() {
-  // wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', false, '9dbd7d094ab56a14e3b2a984b20ea357');
+function spring_scripts() {
   wp_enqueue_style('spring_main', get_template_directory_uri() . '/assets/css/style.css', false);
 
 
@@ -21,7 +20,7 @@ function roots_scripts() {
   if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
     wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, null, false);
-    add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
+    add_filter('script_loader_src', 'spring_jquery_local_fallback', 10, 2);
   }
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
@@ -29,15 +28,15 @@ function roots_scripts() {
   }
 
   wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.7.0.min.js', false, null, false);
-  wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', false, 'be373268f9b8ecda7c3a45154676e637', true);
+  wp_register_script('spring_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', false, 'be373268f9b8ecda7c3a45154676e637', true);
   wp_enqueue_script('modernizr');
   wp_enqueue_script('jquery');
-  wp_enqueue_script('roots_scripts');
+  wp_enqueue_script('spring_scripts');
 }
-add_action('wp_enqueue_scripts', 'roots_scripts', 100);
+add_action('wp_enqueue_scripts', 'spring_scripts', 100);
 
 // http://wordpress.stackexchange.com/a/12450
-function roots_jquery_local_fallback($src, $handle = null) {
+function spring_jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
 
   if ($add_jquery_fallback) {
@@ -51,9 +50,9 @@ function roots_jquery_local_fallback($src, $handle = null) {
 
   return $src;
 }
-add_action('wp_head', 'roots_jquery_local_fallback');
+add_action('wp_head', 'spring_jquery_local_fallback');
 
-function roots_google_analytics() { ?>
+function spring_google_analytics() { ?>
 <script>
   (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
   function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -65,5 +64,5 @@ function roots_google_analytics() { ?>
 
 <?php }
 if (GOOGLE_ANALYTICS_ID && !current_user_can('manage_options')) {
-  add_action('wp_footer', 'roots_google_analytics', 20);
+  add_action('wp_footer', 'spring_google_analytics', 20);
 }
