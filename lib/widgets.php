@@ -2,10 +2,10 @@
 /**
  * Register sidebars and widgets
  */
-function roots_widgets_init() {
+function spring_widgets_init() {
   // Sidebars
   register_sidebar(array(
-    'name'          => __('Primary', 'roots'),
+    'name'          => __('Primary', 'spring'),
     'id'            => 'sidebar-primary',
     'before_widget' => '<section class="widget %1$s %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
@@ -14,7 +14,7 @@ function roots_widgets_init() {
   ));
 
   register_sidebar(array(
-    'name'          => __('Footer', 'roots'),
+    'name'          => __('Footer', 'spring'),
     'id'            => 'sidebar-footer',
     'before_widget' => '<section class="widget %1$s %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
@@ -25,10 +25,11 @@ function roots_widgets_init() {
   // Widgets
   register_widget('Roots_Vcard_Widget');
 }
-add_action('widgets_init', 'roots_widgets_init');
+add_action('widgets_init', 'spring_widgets_init');
 
 /**
  * Example vCard widget
+ * TODO: Consider removing
  */
 class Roots_Vcard_Widget extends WP_Widget {
   private $fields = array(

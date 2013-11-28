@@ -7,7 +7,7 @@
  * Remove inline CSS used by posts with galleries
  * Remove self-closing tag and change ''s to "'s on rel_canonical()
  */
-function roots_head_cleanup() {
+function spring_head_cleanup() {
   // Originally from http://wpengineer.com/1438/wordpress-header/
   remove_action('wp_head', 'feed_links', 2);
   remove_action('wp_head', 'feed_links_extra', 3);
@@ -22,11 +22,11 @@ function roots_head_cleanup() {
 
   if (!class_exists('WPSEO_Frontend')) {
     remove_action('wp_head', 'rel_canonical');
-    add_action('wp_head', 'roots_rel_canonical');
+    add_action('wp_head', 'spring_rel_canonical');
   }
 }
 
-function roots_rel_canonical() {
+function spring_rel_canonical() {
   global $wp_the_query;
 
   if (!is_singular()) {
@@ -40,7 +40,7 @@ function roots_rel_canonical() {
   $link = get_permalink($id);
   echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
-add_action('init', 'roots_head_cleanup');
+add_action('init', 'spring_head_cleanup');
 
 /**
  * Remove the WordPress version from RSS feeds
@@ -53,7 +53,7 @@ add_filter('the_generator', '__return_false');
  * Change lang="en-US" to lang="en"
  * Remove dir="ltr"
  */
-function roots_language_attributes() {
+function spring_language_attributes() {
   $attributes = array();
   $output = '';
 
@@ -72,16 +72,16 @@ function roots_language_attributes() {
   }
 
   $output = implode(' ', $attributes);
-  $output = apply_filters('roots_language_attributes', $output);
+  $output = apply_filters('spring_language_attributes', $output);
 
   return $output;
 }
-add_filter('language_attributes', 'roots_language_attributes');
+add_filter('language_attributes', 'spring_language_attributes');
 
 /**
  * Manage output of wp_title()
  */
-function roots_wp_title($title) {
+function spring_wp_title($title) {
   if (is_feed()) {
     return $title;
   }
@@ -90,7 +90,7 @@ function roots_wp_title($title) {
 
   return $title;
 }
-add_filter('wp_title', 'roots_wp_title', 10);
+add_filter('wp_title', 'spring_wp_title', 10);
 
 /**
  * Clean up output of stylesheet <link> tags
@@ -106,7 +106,7 @@ add_filter('style_loader_tag', 'roots_clean_style_tag');
 /**
  * Add and remove body_class() classes
  */
-function roots_body_class($classes) {
+function spring_body_class($classes) {
   // Add post/page slug
   if (is_single() || is_page() && !is_front_page()) {
     $classes[] = basename(get_permalink());
@@ -122,7 +122,7 @@ function roots_body_class($classes) {
 
   return $classes;
 }
-add_filter('body_class', 'roots_body_class');
+add_filter('body_class', 'spring_body_class');
 
 /**
  * Wrap embedded media as suggested by Readability
@@ -224,7 +224,7 @@ add_filter('get_bloginfo_rss', 'roots_remove_default_description');
  *
  * @link http://txfx.net/wordpress-plugins/nice-search/
  */
-function roots_nice_search_redirect() {
+function spring_nice_search_redirect() {
   global $wp_rewrite;
   if (!isset($wp_rewrite) || !is_object($wp_rewrite) || !$wp_rewrite->using_permalinks()) {
     return;
@@ -237,7 +237,7 @@ function roots_nice_search_redirect() {
   }
 }
 if (current_theme_supports('nice-search')) {
-  add_action('template_redirect', 'roots_nice_search_redirect');
+  add_action('template_redirect', 'spring_nice_search_redirect');
 }
 
 /**
