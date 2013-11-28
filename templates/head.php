@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- kd -->
 <html class="no-js" <?php language_attributes(); ?>>
 <head>
     <title><?php wp_title('|', true, 'right'); ?></title>
@@ -12,7 +13,7 @@
 
     <?php wp_head(); ?>
 
-  <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
+    <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 </head>
 <body <?php body_class(); ?>>
     <header class="header-main">
@@ -23,7 +24,7 @@
         <nav class="nav-main" role="navigation">
             <?php
               if (has_nav_menu('primary_navigation')) :
-                wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav nav-pills'));
+                wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'springtheme-main-menu'));
               endif;
             ?>
         </nav>
