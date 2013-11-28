@@ -1,14 +1,15 @@
 <?php
 /**
- * Roots initial setup and constants
+ * Spring Theme initial setup and constants
+ * kd
  */
-function roots_setup() {
+function spring_setup() {
   // Make theme available for translation
-  load_theme_textdomain('roots', get_template_directory() . '/lang');
+  load_theme_textdomain('spring-theme', get_template_directory() . '/lang');
 
   // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
   register_nav_menus(array(
-    'primary_navigation' => __('Primary Navigation', 'roots'),
+    'primary_navigation' => __('Primary Navigation', 'spring-theme'),
   ));
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)
@@ -20,9 +21,9 @@ function roots_setup() {
   // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 
   // Tell the TinyMCE editor to use a custom stylesheet
-  add_editor_style('/assets/css/editor-style.css');
+  // add_editor_style('/assets/css/editor-style.css');
 }
-add_action('after_setup_theme', 'roots_setup');
+add_action('after_setup_theme', 'spring_setup');
 
 // Backwards compatibility for older than PHP 5.3.0
 if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
