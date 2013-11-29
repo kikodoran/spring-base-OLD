@@ -5,7 +5,7 @@
  * @link http://roots.io/an-introduction-to-the-roots-theme-wrapper/
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
-function roots_template_path() {
+function spring_template_path() {
   return Roots_Wrapping::$main_template;
 }
 
