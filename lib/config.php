@@ -11,11 +11,11 @@ add_theme_support('jquery-cdn');            // Enable to load jQuery from the Go
 /**
  * Configuration values
  */
-define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
 define('POST_EXCERPT_LENGTH', 40); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
 /**
  * .main classes
+ * TODO: need to look at whether this stuff is worth keeping-kd
  */
 function roots_main_class() {
   if (roots_display_sidebar()) {
@@ -41,7 +41,7 @@ function roots_sidebar_class() {
  *
  * See lib/sidebar.php for more details
  */
-function roots_display_sidebar() {
+function spring_display_sidebar() {
   $sidebar_config = new Roots_Sidebar(
     /**
      * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
@@ -65,7 +65,7 @@ function roots_display_sidebar() {
     )
   );
 
-  return apply_filters('roots_display_sidebar', $sidebar_config->display);
+  return apply_filters('spring_display_sidebar', $sidebar_config->display);
 }
 
 /**
