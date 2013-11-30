@@ -4,7 +4,7 @@
     <main class="main <?php echo roots_main_class(); ?>" role="main">
       <?php include spring_template_path(); ?>
     </main><!-- /.main -->
-    <?php if (roots_display_sidebar()) : ?>
+    <?php if (spring_display_sidebar()) : ?>
       <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
         <?php include spring_sidebar_path(); ?>
       </aside><!-- /.sidebar -->
