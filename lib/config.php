@@ -32,7 +32,7 @@ function roots_main_class() {
 /**
  * .sidebar classes
  */
-function roots_sidebar_class() {
+function spring_sidebar_class() {
   return 'sidebar-main';
 }
 
@@ -42,7 +42,7 @@ function roots_sidebar_class() {
  * See lib/sidebar.php for more details
  */
 function spring_display_sidebar() {
-  $sidebar_config = new Roots_Sidebar(
+  $sidebar_config = new Spring_Sidebar(
     /**
      * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
      * Any of these conditional tags that return true won't show the sidebar
