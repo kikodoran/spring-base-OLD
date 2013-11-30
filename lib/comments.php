@@ -4,7 +4,10 @@
  *
  * @link http://getbootstrap.com/components/#media
  */
-class Roots_Walker_Comment extends Walker_Comment {
+
+//TODO: take another look at this, seems to be adding bootstrap specific selectors
+
+class spring_Walker_Comment extends Walker_Comment {
   function start_lvl(&$output, $depth = 0, $args = array()) {
     $GLOBALS['comment_depth'] = $depth + 1; ?>
     <ul <?php comment_class('media unstyled comment-' . get_comment_ID()); ?>>
@@ -42,8 +45,8 @@ class Roots_Walker_Comment extends Walker_Comment {
   }
 }
 
-function roots_get_avatar($avatar) {
+function spring_get_avatar($avatar) {
   $avatar = str_replace("class='avatar", "class='avatar pull-left media-object", $avatar);
   return $avatar;
 }
-add_filter('get_avatar', 'roots_get_avatar');
+add_filter('get_avatar', 'spring_get_avatar');
