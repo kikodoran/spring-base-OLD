@@ -95,13 +95,13 @@ add_filter('wp_title', 'spring_wp_title', 10);
 /**
  * Clean up output of stylesheet <link> tags
  */
-function roots_clean_style_tag($input) {
+function spring_clean_style_tag($input) {
   preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
   // Only display media if it is meaningful
   $media = $matches[3][0] !== '' && $matches[3][0] !== 'all' ? ' media="' . $matches[3][0] . '"' : '';
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
-add_filter('style_loader_tag', 'roots_clean_style_tag');
+add_filter('style_loader_tag', 'spring_clean_style_tag');
 
 /**
  * Add and remove body_class() classes
@@ -130,10 +130,10 @@ add_filter('body_class', 'spring_body_class');
  * @link https://gist.github.com/965956
  * @link http://www.readability.com/publishers/guidelines#publisher
  */
-function roots_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
+function spring_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
   return '<div class="entry-content-asset">' . $cache . '</div>';
 }
-add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
+add_filter('embed_oembed_html', 'spring_embed_wrap', 10, 4);
 
 /**
  * Add Bootstrap thumbnail styling to images with captions
@@ -141,7 +141,7 @@ add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
  *
  * @link http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
  */
-function roots_caption($output, $attr, $content) {
+function spring_caption($output, $attr, $content) {
   if (is_feed()) {
     return $output;
   }
@@ -172,52 +172,52 @@ function roots_caption($output, $attr, $content) {
 
   return $output;
 }
-add_filter('img_caption_shortcode', 'roots_caption', 10, 3);
+add_filter('img_caption_shortcode', 'spring_caption', 10, 3);
 
 /**
  * Remove unnecessary dashboard widgets
  *
  * @link http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
  */
-function roots_remove_dashboard_widgets() {
+function spring_remove_dashboard_widgets() {
   remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
   remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
   remove_meta_box('dashboard_primary', 'dashboard', 'normal');
   remove_meta_box('dashboard_secondary', 'dashboard', 'normal');
 }
-add_action('admin_init', 'roots_remove_dashboard_widgets');
+add_action('admin_init', 'spring_remove_dashboard_widgets');
 
 /**
  * Clean up the_excerpt()
  */
-function roots_excerpt_length($length) {
+function spring_excerpt_length($length) {
   return POST_EXCERPT_LENGTH;
 }
 
-function roots_excerpt_more($more) {
-  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'roots') . '</a>';
+function spring_excerpt_more($more) {
+  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'spring') . '</a>';
 }
-add_filter('excerpt_length', 'roots_excerpt_length');
-add_filter('excerpt_more', 'roots_excerpt_more');
+add_filter('excerpt_length', 'spring_excerpt_length');
+add_filter('excerpt_more', 'spring_excerpt_more');
 
 /**
  * Remove unnecessary self-closing tags
  */
-function roots_remove_self_closing_tags($input) {
+function spring_remove_self_closing_tags($input) {
   return str_replace(' />', '>', $input);
 }
-add_filter('get_avatar',          'roots_remove_self_closing_tags'); // <img />
-add_filter('comment_id_fields',   'roots_remove_self_closing_tags'); // <input />
-add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags'); // <img />
+add_filter('get_avatar',          'spring_remove_self_closing_tags'); // <img />
+add_filter('comment_id_fields',   'spring_remove_self_closing_tags'); // <input />
+add_filter('post_thumbnail_html', 'spring_remove_self_closing_tags'); // <img />
 
 /**
  * Don't return the default description in the RSS feed if it hasn't been changed
  */
-function roots_remove_default_description($bloginfo) {
+function spring_remove_default_description($bloginfo) {
   $default_tagline = 'Just another WordPress site';
   return ($bloginfo === $default_tagline) ? '' : $bloginfo;
 }
-add_filter('get_bloginfo_rss', 'roots_remove_default_description');
+add_filter('get_bloginfo_rss', 'spring_remove_default_description');
 
 /**
  * Redirects search results from /?s=query to /search/query/, converts %20 to +
@@ -246,21 +246,21 @@ if (current_theme_supports('nice-search')) {
  * @link http://wordpress.org/support/topic/blank-search-sends-you-to-the-homepage#post-1772565
  * @link http://core.trac.wordpress.org/ticket/11330
  */
-function roots_request_filter($query_vars) {
+function spring_request_filter($query_vars) {
   if (isset($_GET['s']) && empty($_GET['s'])) {
     $query_vars['s'] = ' ';
   }
 
   return $query_vars;
 }
-add_filter('request', 'roots_request_filter');
+add_filter('request', 'spring_request_filter');
 
 /**
  * Tell WordPress to use searchform.php from the templates/ directory
  */
-function roots_get_search_form($form) {
+function spring_get_search_form($form) {
   $form = '';
   locate_template('/templates/searchform.php', true, false);
   return $form;
 }
-add_filter('get_search_form', 'roots_get_search_form');
+add_filter('get_search_form', 'spring_get_search_form');
