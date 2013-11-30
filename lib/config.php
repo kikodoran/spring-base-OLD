@@ -17,7 +17,7 @@ define('POST_EXCERPT_LENGTH', 40); // Length in words for excerpt_length filter 
  * .main classes
  * TODO: need to look at whether this stuff is worth keeping-kd
  */
-function roots_main_class() {
+function spring_main_class() {
   if (spring_display_sidebar()) {
     // Classes on pages with the sidebar
     $class = 'content-main';
