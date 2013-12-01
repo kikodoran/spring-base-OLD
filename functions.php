@@ -1,6 +1,6 @@
 <?php
 /**
- * Roots includes
+ * Spring includes
  */
 require_once locate_template('/lib/utils.php');           // Utility functions
 require_once locate_template('/lib/init.php');            // kdInitial theme setup and constants
