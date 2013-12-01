@@ -80,10 +80,6 @@ function spring_nav_menu_args($args = '') {
     $spring_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
   }
 
-  if (current_theme_supports('bootstrap-top-navbar') && !$args['depth']) {
-    $spring_nav_menu_args['depth'] = 2;
-  }
-
   if (!$args['walker']) {
     $spring_nav_menu_args['walker'] = new Spring_Nav_Walker();
   }
