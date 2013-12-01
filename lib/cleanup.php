@@ -136,7 +136,7 @@ function spring_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
 add_filter('embed_oembed_html', 'spring_embed_wrap', 10, 4);
 
 /**
- * Add Bootstrap thumbnail styling to images with captions
+ * Add thumbnail styling to images with captions
  * Use <figure> and <figcaption>
  *
  * @link http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
