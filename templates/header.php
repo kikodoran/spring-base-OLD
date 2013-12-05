@@ -71,11 +71,12 @@
             endif;
             ?>
         </nav>
-        <section class="activate-icons">
-
+        <section class="open-button-wrapper">
+            <button id="openMainMenu" class="open-main-menu open-button">Open Main Menu</button>
+            <button id="openSidebar" class="open-sidebar open-button">Open Sidebar</button>
         </section>
         <section class="search" role="search">
-
+            <?php spring_get_search_form(); ?>
         </section>
         <h1 class="blog-name">
             <!-- TODO: Create option in theme customizer to upload new logo -->
