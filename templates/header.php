@@ -76,7 +76,7 @@
             <button id="openSidebar" class="open-sidebar open-button">Open Sidebar</button>
         </section>
         <section class="search" role="search">
-            <?php spring_get_search_form(); ?>
+            <?php get_search_form(); ?>
         </section>
         <h1 class="blog-name">
             <!-- TODO: Create option in theme customizer to upload new logo -->
