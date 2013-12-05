@@ -71,6 +71,12 @@
             endif;
             ?>
         </nav>
+        <section class="activate-icons">
+
+        </section>
+        <section class="search" role="search">
+
+        </section>
         <h1 class="blog-name">
             <!-- TODO: Create option in theme customizer to upload new logo -->
             <a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?>"><?php bloginfo('name'); ?></a>
