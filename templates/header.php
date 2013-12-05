@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- kd -->
 <html class="no-js" <?php language_attributes(); ?>>
 <head>
     <title><?php wp_title('|', true, 'right'); ?></title>
