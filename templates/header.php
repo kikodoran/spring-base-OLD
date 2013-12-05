@@ -33,6 +33,10 @@
     <!-- <link rel="apple-touch-startup-image" sizes="1024x748" href="<?php echo get_template_directory_uri(); ?>/images/startup/startup-1024x748.png" media="screen and (min-device-width:481px) and (max-device-width:1024px) and (orientation:landscape)"> -->
     <!-- iPad Portrait -->
     <!-- <link rel="apple-touch-startup-image" sizes="768x1004" href="<?php echo get_template_directory_uri(); ?>/images/startup/startup-768x1004.png" media="screen and (min-device-width:481px) and (max-device-width:1024px) and (orientation:portrait)"> -->
+    <!-- iPad landscape -->
+    <!-- <link rel="apple-touch-startup-image" sizes="2048x1496" href="/content/images/startup/startup-2048x1496.png" media="screen&#32;and&#32;(min-device-width:481px)&#32;and&#32;(max-device-width:1024px)&#32;and&#32;(orientation:landscape)&#32;and&#32;(-webkit-min-device-pixel-ratio:2)" /> -->
+    <!-- iPad Portrait -->
+    <!-- <link rel="apple-touch-startup-image" sizes="1536x2008" href="/content/images/startup/startup-1536x2008.png" media="screen&#32;and&#32;(min-device-width:481px)&#32;and&#32;(max-device-width:1024px)&#32;and&#32;(orientation:portrait)&#32;and&#32;(-webkit-min-device-pixel-ratio:2)" /> -->
 
 
     <!-- MICROSOFT/WIN8/WIN8.1 SPECIFIC -->
@@ -60,6 +64,13 @@
 </head>
 <body <?php body_class(); ?>>
     <header class="header-main">
+        <nav class="nav-quicklinks" role="navigation">
+            <?php
+            if (has_nav_menu('quicklink_navigation')) :
+                wp_nav_menu(array('theme_location' => 'quicklink_navigation', 'menu_class' => 'quicklink-menu'));
+            endif;
+            ?>
+        </nav>
         <h1 class="blog-name">
             <!-- TODO: Create option in theme customizer to upload new logo -->
             <a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?>"><?php bloginfo('name'); ?></a>
@@ -67,7 +78,7 @@
         <nav class="nav-main" role="navigation">
             <?php
               if (has_nav_menu('primary_navigation')) :
-                wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'springtheme-main-menu'));
+                wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'main-menu'));
               endif;
             ?>
         </nav>
